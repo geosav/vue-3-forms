@@ -2,16 +2,11 @@
   <div>
     <h1>Create an event</h1>
     <form>
-
-      <label>Select a category</label>
-      <select v-model="event.category">
-        <option
-          v-for="option in categories"
-          :value="option"
-          :key="option"
-          :selected="option === event.category"
-        >{{ option }}</option>
-      </select>
+      <BaseSelect
+        :options="categories"
+        v-model="event.category"
+        label="Select a category"
+      />
 
       <h3>Name & describe your event</h3>
 
@@ -75,6 +70,8 @@
         <label>Live music</label>
       </div>
 
+      <div>{{ event }}</div>
+
       <button class="button -fill-gradient" type="submit">Submit</button>
     </form>
   </div>
@@ -82,9 +79,11 @@
 
 <script>
 import BaseInput from '@/components/BaseInput'
+import BaseSelect from '@/components/BaseSelect'
 
 export default {
   components: {
+    BaseSelect,
     BaseInput
   },
   data () {
